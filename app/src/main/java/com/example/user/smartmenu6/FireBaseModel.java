@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jun1 on 2017-11-25.
+ * Created by jun on 2017-11-25.
  */
 
 public class FireBaseModel {
