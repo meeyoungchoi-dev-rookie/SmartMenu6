@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by jun on 2017-11-25.
+ * Created by jun1 on 2017-11-25.
  */
 
 public class FireBaseModel {
@@ -89,10 +89,6 @@ public class FireBaseModel {
                     Log.d("onChildAdded 1",GSON.toJson(dataSnapshot.toString()));
                                        HashMap hashMap = new HashMap();
                     hashMap.put("key",dataSnapshot.getKey());
-
-
-
-
 
                     hashMap.put("name",dataSnapshot.child("name").getValue());
                     hashMap.put("cost",dataSnapshot.child("cost").getValue());
