@@ -14,6 +14,7 @@ public class CustomerMenuOrderPage extends AppCompatActivity implements View.OnC
     Button btn2;
     Button btn3;
     String test;
+    String test2;
 
     FragmentManager manager;
     FoodFragment foodFragment;
