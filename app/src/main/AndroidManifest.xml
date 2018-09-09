@@ -28,9 +28,22 @@
             />
         <activity android:name=".KitchenMenuCheck"
             />
-
         <activity android:name=".OrderCheck"
             />
+
+        <service android:name=".service.FoodFirbaseMessagingService" >
+            <intent-filter>
+                <action android:name="cpm.google.firrbase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+        <service android:name=".service.FoodFirebaseInstanceIdService" >
+            <intent-filter>
+                <action android:name="com.google.firbase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+
+        </service>
 
 
 
