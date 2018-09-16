@@ -17,11 +17,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.smartmenu6.service.FireBaseHttpRequestConnector;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class FoodDetailFragment extends Fragment {
@@ -231,21 +234,43 @@ public class FoodDetailFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-    private void addOrder(){
+    private void addOrder() {
         //define 주문에 대한 데이터 처리
         // FireBase 권장.
-        Log.d("test",food.toString());
+        Log.d("test", food.toString());
         food.setTableNo(tableSpinner.getSelectedItem().toString());
         food.setOrderSts("N");
 
 
-
         fireBaseModel.addData(food);
-       Toast toat = Toast.makeText(rootView.getContext(), "주문완료", Toast.LENGTH_SHORT);
+        Toast toat = Toast.makeText(rootView.getContext(), "주문완료", Toast.LENGTH_SHORT);
         toat.show();
+
+
+
+        Map<String, Object> firebaseMap =createfirebaseMap(food);
+
+
+        FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
+        fireBaseHttpRequestConnector.execute(firebaseMap);
     }
+
+    private Map<String,Object> createfirebaseMap(Food food) {
+        Map<String, String> foodMap = new HashMap<>();
+        foodMap.put("title", food.getName());
+        foodMap.put("body", food.getTableNo());
+
+        Map<String, Object> firebaseMap=new HashMap<>();
+        firebaseMap.put("to", FirebaseInstanceId.getInstance().getToken());
+        firebaseMap.put("notification", foodMap);
+        firebaseMap.put("data", foodMap);
+        return firebaseMap;
+    }
+
 
     private void goList() {
         ((CustomerMenuOrderPage)getActivity()).switchFragment(new FoodFragment(food.getCountry()));
     }
+
+
 }

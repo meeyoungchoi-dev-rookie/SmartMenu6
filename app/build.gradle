@@ -37,6 +37,12 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:11.6.0'
 
 
+
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
