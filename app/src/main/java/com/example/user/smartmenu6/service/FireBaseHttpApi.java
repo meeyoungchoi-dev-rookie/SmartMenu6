@@ -10,7 +10,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface FireBaseHttpApi {
-@Headers({"Authorization: key=AAAA6WS6qEY:APA91bGTuYEflyIY7P_qGd9PEggqkKKC9snKh6s8Eos8sA7KNAkIa3GBUVVtgjNjgRErjQdaskoPgquLRmUAHQ9bCUbv9YuvkhU4Ez6lDnaowWZ5xfZCyLPF-FSw0vVIHP-TrE-Fbc2s"
+@Headers({"Authorization: key=AAAAHoF5t-s:APA91bH68ptgQGxlh1OJDwoSiUFQikXg-jM_Rp2L4gkq0ubka8MDVVFikYmL49HBO9Vs4oYl4JgIMPfczL8b0sdc__v3dps_-ZQBOgYitqEMmXlf7sTtlvCzYfLltRRlDOlq-o87TMzB"
         ,"Content-Type:application/json"})
 @POST("fcm/send")
     Call<ResponseBody> sendChatNotification(@Body Map<String, Object> requestNotification);

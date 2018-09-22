@@ -248,20 +248,23 @@ public class FoodDetailFragment extends Fragment {
 
 
 
-        Map<String, Object> firebaseMap =createfirebaseMap(food);
+        Map<String, Object> firebaseMap =createFirebaseMap(food);
 
 
         FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
         fireBaseHttpRequestConnector.execute(firebaseMap);
     }
 
-    private Map<String,Object> createfirebaseMap(Food food) {
+    private Map<String,Object> createFirebaseMap(Food food) {
         Map<String, String> foodMap = new HashMap<>();
         foodMap.put("title", food.getName());
         foodMap.put("body", food.getTableNo());
 
         Map<String, Object> firebaseMap=new HashMap<>();
-        firebaseMap.put("to", FirebaseInstanceId.getInstance().getToken());
+
+        String to= FirebaseInstanceId.getInstance().getToken();
+        Log.d("to :", to);
+        firebaseMap.put("to", to);
         firebaseMap.put("notification", foodMap);
         firebaseMap.put("data", foodMap);
         return firebaseMap;

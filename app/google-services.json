@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "1002417334342",
-    "firebase_url": "https://smartmenu-2648e.firebaseio.com",
-    "project_id": "smartmenu-2648e",
-    "storage_bucket": "smartmenu-2648e.appspot.com"
+    "project_number": "131021256683",
+    "firebase_url": "https://foodorder-2dd0b.firebaseio.com",
+    "project_id": "foodorder-2dd0b",
+    "storage_bucket": "foodorder-2dd0b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1002417334342:android:3858c1a3b6a28dfb",
+        "mobilesdk_app_id": "1:131021256683:android:3858c1a3b6a28dfb",
         "android_client_info": {
           "package_name": "com.example.user.smartmenu6"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1002417334342-577n3cbuvqk644nkqpdicgtrt3rhkdck.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.user.smartmenu6",
-            "certificate_hash": "2933ddf6a2d8df7690016e62b3463c4935dc541c"
-          }
-        },
-        {
-          "client_id": "1002417334342-ootg7c8hd1u8c8j2edbtehri85gavmi9.apps.googleusercontent.com",
+          "client_id": "131021256683-3b0akclo5h6ri6k1d2tjlqo7kab0681d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBP-B4b80WfCgHTeYtxR1LbiZpkBoGfbYQ"
+          "current_key": "AIzaSyDXVnbqRBxx17GIVCf9YBeMT3pa236AZ44"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1002417334342-ootg7c8hd1u8c8j2edbtehri85gavmi9.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
