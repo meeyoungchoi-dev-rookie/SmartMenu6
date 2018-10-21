@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,24 +17,18 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="고객"
+            android:text="매장"
             android:id="@+id/customer"
             />
 
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="주방"
-            android:id="@+id/kitchen"
+            android:text="포장"
+            android:id="@+id/clerk"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="관리자"
-            android:id="@+id/manager"
-            />
+
 
 
     </LinearLayout>

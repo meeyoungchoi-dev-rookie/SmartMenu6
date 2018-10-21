@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.smartmenu6.dto.ToToken;
 import com.example.user.smartmenu6.service.FireBaseHttpRequestConnector;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
@@ -117,13 +118,19 @@ public class FoodDetailFragment extends Fragment {
 
         setDataView(paramMap);
 
-        fireBaseModel = new FireBaseModel(rootView.getContext());
-        fireBaseModel .firebaseAuthWithGoogle();
-        fireBaseModel.firebaseNoneAuth();
+        defineFirBase();
         // arrayAdapter = new MyHashMapAdapter(this,arrayList);
         //fireBaseModel.setListListener(arrayAdapter);
         //myList.setAdapter(arrayAdapter);
     }
+    protected  void defineFirBase(){
+
+        fireBaseModel = new FireBaseModel(rootView.getContext());
+        fireBaseModel .firebaseAuthWithGoogle();
+        fireBaseModel.firebaseNoneAuth();
+        fireBaseModel.refreshClientTokenList();
+    }
+
 
     protected void defineListener(){
         cancelBtnClickListener = new View.OnClickListener() {
@@ -247,22 +254,37 @@ public class FoodDetailFragment extends Fragment {
         toat.show();
 
 
+        sendOrderMessage(food,fireBaseModel.getClientTokenList());
 
-        Map<String, Object> firebaseMap =createFirebaseMap(food);
 
-
-        FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
-        fireBaseHttpRequestConnector.execute(firebaseMap);
     }
 
-    private Map<String,Object> createFirebaseMap(Food food) {
+    //토큰받기->전송 저장 주방목록 가져오기 주방목록 만큼 메시지 전송
+    private void sendOrderMessage(Food food,ArrayList<ToToken> clientTokenList) {
+
+        //주방목록 가져오기 주방목록 만큼 메시지 전송
+
+        for (int i = 0; i < clientTokenList.size(); i++) {
+            if (clientTokenList.get(i).getRole().equals("2")) {
+                if (clientTokenList.get(i).getToken() != null) {
+
+                    Map<String, Object> firebaseMap = createFirebaseMap(food, clientTokenList.get(i).getToken());
+                    FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
+                    fireBaseHttpRequestConnector.execute(firebaseMap);
+                }
+
+            }
+        }
+    }
+
+    private Map<String,Object> createFirebaseMap(Food food,String to) {
         Map<String, String> foodMap = new HashMap<>();
         foodMap.put("title", food.getName());
         foodMap.put("body", food.getTableNo());
 
         Map<String, Object> firebaseMap=new HashMap<>();
 
-        String to= FirebaseInstanceId.getInstance().getToken();
+
         Log.d("to :", to);
         firebaseMap.put("to", to);
         firebaseMap.put("notification", foodMap);
