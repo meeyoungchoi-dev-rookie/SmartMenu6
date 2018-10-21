@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/main_background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -21,12 +22,6 @@
             android:id="@+id/customer"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="점원"
-            android:id="@+id/clerk"
-            />
 
         <Button
             android:layout_width="wrap_content"
