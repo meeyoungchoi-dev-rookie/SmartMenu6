@@ -42,15 +42,16 @@ public class FoodDetailFragment extends Fragment {
     HashMap mWeatherImageMap=new HashMap<>();
     HashMap paramMap;
     View rootView;
-    Spinner tableSpinner;
+    Spinner foodCntSpiner;
     FireBaseModel fireBaseModel;
-    ArrayList<String> arrayList;
+    ArrayList<String> arrayList = new ArrayList<String>();;
     static int count=0;
 
 
 
 
     private OnFragmentInteractionListener mListener;
+    private AdapterView.OnItemSelectedListener foodCntSelectedListener;
 
     public FoodDetailFragment() {
         // Required empty public constructor
@@ -89,8 +90,20 @@ public class FoodDetailFragment extends Fragment {
     }
 
     protected void init(View rootView){
+        defineData();
         defineView(rootView);
 
+
+
+        setDataView(paramMap);
+
+        defineFirBase();
+        // arrayAdapter = new MyHashMapAdapter(this,arrayList);
+        //fireBaseModel.setListListener(arrayAdapter);
+        //myList.setAdapter(arrayAdapter);
+    }
+
+    private void defineData() {
         mWeatherImageMap.put("청국장", R.drawable.cheonggukjang);
         mWeatherImageMap.put("김치찌개", R.drawable.kimchistew);
         mWeatherImageMap.put("부대찌개", R.drawable.sausagestew);
@@ -120,13 +133,15 @@ public class FoodDetailFragment extends Fragment {
         mWeatherImageMap.put("짜장밥", R.drawable.zazangbob);
         mWeatherImageMap.put("새우볶음밥", R.drawable.saeoobokumbob);
 
-        setDataView(paramMap);
 
-        defineFirBase();
-        // arrayAdapter = new MyHashMapAdapter(this,arrayList);
-        //fireBaseModel.setListListener(arrayAdapter);
-        //myList.setAdapter(arrayAdapter);
+
+        arrayList.add(("1"));
+        arrayList.add(("2"));
+        arrayList.add(("3"));
+        arrayList.add(("4"));
+
     }
+
     protected  void defineFirBase(){
 
         fireBaseModel = new FireBaseModel(rootView.getContext());
@@ -143,17 +158,29 @@ public class FoodDetailFragment extends Fragment {
                 goList();
             }
         };
-
-
         addOrderBtnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addOrder();
             }
         };
+        foodCntSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
 
         cancelBtn.setOnClickListener(cancelBtnClickListener);
         addOrderBtn.setOnClickListener(addOrderBtnClickListener);
+
+        foodCntSpiner.setOnItemSelectedListener(foodCntSelectedListener);
+
     }
 
     Food food;
@@ -164,13 +191,12 @@ public class FoodDetailFragment extends Fragment {
         nameText.setText(food.getName());
         costText.setText(food.getCost());
 
-
         Picasso.with(getContext())
                 .load((Integer) mWeatherImageMap.get(food.getName()))
                 .into(imageView);
     }
     protected void defineView(View rootView){
-        tableSpinner=rootView.findViewById(R.id.spinner_table);
+        foodCntSpiner =rootView.findViewById(R.id.food_cnt_spiner);
 
         nameText  = rootView.findViewById(R.id.name_text);
         costText = rootView.findViewById(R.id.cost_text);
@@ -179,34 +205,10 @@ public class FoodDetailFragment extends Fragment {
         cancelBtn = rootView.findViewById(R.id.cancel_btn);
         addOrderBtn = rootView.findViewById(R.id.addOrder_btn);
 
-
-       arrayList = new ArrayList<String>();
-
-        arrayList.add(("1"));
-        arrayList.add(("2"));
-        arrayList.add(("3"));
-        arrayList.add(("4"));
-
+        defineListener();
 
         ArrayAdapter<String > adapter=new ArrayAdapter<>(rootView.getContext(),android.R.layout.simple_spinner_item,arrayList);
-
-        tableSpinner.setAdapter(adapter);
-        tableSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                food.setTableNo(arrayList.get(position));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-
-        defineListener();
+        foodCntSpiner.setAdapter(adapter);
 
 
 
@@ -252,10 +254,11 @@ public class FoodDetailFragment extends Fragment {
         //define 주문에 대한 데이터 처리
         // FireBase 권장.
         Log.d("test", food.toString());
-        food.setTableNo(tableSpinner.getSelectedItem().toString());
+        food.setTableNo(OrderUtil.tableNo);
         food.setOrderSts("N");
         count++;
         food.setOrderNo(count);
+        food.setOrderCnt(Integer.parseInt(foodCntSpiner.getSelectedItem().toString()));
 
         Date date=new Date();
 

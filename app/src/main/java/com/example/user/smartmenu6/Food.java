@@ -8,9 +8,22 @@ public class Food {
     private String cost;
     private String tableNo;
     private String country;
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public int getOrderCnt() {
+        return orderCnt;
+    }
+
+    public void setOrderCnt(int orderCnt) {
+        this.orderCnt = orderCnt;
+    }
+
     private int orderNo;
     private String orderTime;
-
+    private int orderCnt;
     public int getOrderNo() {
         return orderNo;
     }

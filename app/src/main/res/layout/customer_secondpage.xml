@@ -5,12 +5,35 @@
     android:orientation="vertical"
     android:gravity="center">
 
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
 
+        <RelativeLayout
+            android:id="@+id/table_select_rayout"
+            android:layout_width="135dp"
+            android:layout_height="16dp">
+
+            <TextView
+                android:id="@+id/table_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="테이블선택 :" />
+
+            <Spinner
+                android:id="@+id/table_select"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
 
 
     <Button
@@ -28,5 +51,6 @@
 
 
 </LinearLayout>
+
 
 </LinearLayout>
