@@ -78,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
         mManager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                ToToken toToken=new ToToken();
+                toToken.setRole("1");
+                toToken.setToken(clientToken);
+                addOrUpdateToken(toToken);
                 Intent I = new Intent(MainActivity.this, ManagerSecondPage.class);
 
                 startActivityForResult(I, CHOOSE_BUTTON_REQUEST);
