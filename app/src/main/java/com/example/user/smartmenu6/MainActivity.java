@@ -117,14 +117,18 @@ public class MainActivity extends AppCompatActivity {
                 ToToken rtnToToken=null;
                 //인트 아이가 0  부터 파이어베이스모델에서 가져온 클라이언트토큰 리스트의 크기보다 작을때 까지
                 //포문을 돌리면서 아이를 증가시킨다.
-                for(int i=0; i<fireBaseModel.getClientTokenList().size(); i++){
-                    //투토큰 변수에 파이어베이스모델에서 가져온 클라이언트 토큰 리스트의 아이번쨰를 가져와서 넣는다.
-                   // Log.d("token: ",fireBaseModel.getClientTokenList().get(i).)
-                    ToToken toToken=fireBaseModel.getClientTokenList().get(i);
-                    //만약에 투토큰에서 가져온 토큰이 클라이언트 토큰과 같다면
-                    if(toToken.getToken() !=null && toToken.getToken().equals(clientToken)) {
-                        //알티텐불린은 트루이다.
-                        rtnToToken=toToken;
+                if(fireBaseModel.getClientTokenList()!=null){
+
+                    for(int i=0; i<fireBaseModel.getClientTokenList().size(); i++){
+                        //투토큰 변수에 파이어베이스모델에서 가져온 클라이언트 토큰 리스트의 아이번쨰를 가져와서 넣는다.
+                        // Log.d("token: ",fireBaseModel.getClientTokenList().get(i).)
+                        ToToken toToken=fireBaseModel.getClientTokenList().get(i);
+                        //만약에 투토큰에서 가져온 토큰이 클라이언트 토큰과 같다면
+                        if(toToken.getToken() !=null && toToken.getToken().equals(clientToken)) {
+                            //알티텐불린은 트루이다.
+                            rtnToToken=toToken;
+                }
+
                     }
         }
         //알티엔 블린을 반환한다.

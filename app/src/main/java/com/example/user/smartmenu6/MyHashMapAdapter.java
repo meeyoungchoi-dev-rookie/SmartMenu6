@@ -64,10 +64,17 @@ public class MyHashMapAdapter extends BaseAdapter  {
             // TextView costText = (TextView) convertView.findViewById(R.id.cost_text);
             TextView tableText = (TextView) convertView.findViewById(R.id.table_text);
 
+
+            TextView orderNo = (TextView) convertView.findViewById(R.id.order_no);
+
             holder.koreanImage = koreanImage;
             holder.nameText = nameText;
             // holder.costText = costText;
             holder.tableText = tableText;
+
+            //주문번호
+            holder.orderNo=orderNo;
+
             convertView.setTag(holder);
         } else {
             holder = (MyHashMapAdapter.ViewHolder) convertView.getTag();
@@ -85,6 +92,8 @@ public class MyHashMapAdapter extends BaseAdapter  {
         holder.nameText.setText(food.get("name").toString());
         // holder.costText.setText(food.get("cost").toString());
         holder.tableText.setText(food.get("tableNo").toString());
+        //주문번호
+        holder.orderNo.setText(food.get("orderNo").toString());
 
 
 
@@ -102,6 +111,7 @@ public class MyHashMapAdapter extends BaseAdapter  {
         TextView nameText;
         //TextView costText;
         TextView tableText;
+        TextView orderNo;
 
     }
 

@@ -5,7 +5,13 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -14,26 +20,51 @@
 
         <Button
             android:id="@+id/btn_cook_finish"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/name_text"
+            android:layout_marginEnd="28dp"
             android:text="조리완료" />
 
         <TextView
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/order_no"
+            android:layout_centerHorizontal="true"
             android:text="음식명"
-            android:textSize="30sp"/>
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/table_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="테이블번호"
-            android:gravity="end"/>
+            android:layout_above="@+id/btn_cook_finish"
+            android:layout_alignStart="@+id/order_time"
+            android:gravity="end"
+            android:text="테이블번호" />
+
+        <TextView
+            android:id="@+id/order_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/table_text"
+            android:layout_marginTop="37dp"
+            android:gravity="end"
+            android:text="주문번호" />
+
+        <TextView
+            android:id="@+id/order_time"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="76dp"
+            android:text="주문시간" />
 
 
-
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.user.smartmenu6;
+/*package com.example.user.smartmenu6;
 
 public class Time {
 
@@ -30,8 +30,7 @@ public class Time {
     }
     return msg;
 }
-
-
+*/
 
 
 

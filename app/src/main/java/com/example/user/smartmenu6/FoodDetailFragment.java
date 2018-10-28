@@ -23,7 +23,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +45,8 @@ public class FoodDetailFragment extends Fragment {
     Spinner tableSpinner;
     FireBaseModel fireBaseModel;
     ArrayList<String> arrayList;
+    static int count=0;
+
 
 
 
@@ -241,17 +245,33 @@ public class FoodDetailFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    String  time;
     private void addOrder() {
         //define 주문에 대한 데이터 처리
         // FireBase 권장.
         Log.d("test", food.toString());
         food.setTableNo(tableSpinner.getSelectedItem().toString());
         food.setOrderSts("N");
+        count++;
+        food.setOrderNo(count);
+
+        Date date=new Date();
+
+        SimpleDateFormat sdf=new SimpleDateFormat("yyy.MM.dd hh:mm ");
+        time=sdf.format(date).toString();//시간을 만들어내서 보여준다.
+
+
+
+
 
 
         fireBaseModel.addData(food);
         Toast toat = Toast.makeText(rootView.getContext(), "주문완료", Toast.LENGTH_SHORT);
         toat.show();
+
+
 
 
         sendOrderMessage(food,fireBaseModel.getClientTokenList());
@@ -264,17 +284,20 @@ public class FoodDetailFragment extends Fragment {
 
         //주방목록 가져오기 주방목록 만큼 메시지 전송
 
-        for (int i = 0; i < clientTokenList.size(); i++) {
-            if (clientTokenList.get(i).getRole().equals("2")) {
-                if (clientTokenList.get(i).getToken() != null) {
+        if(clientTokenList!=null){
+            for (int i = 0; i < clientTokenList.size(); i++) {
+                if (clientTokenList.get(i).getRole().equals("2")) {
+                    if (clientTokenList.get(i).getToken() != null) {
 
-                    Map<String, Object> firebaseMap = createFirebaseMap(food, clientTokenList.get(i).getToken());
-                    FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
-                    fireBaseHttpRequestConnector.execute(firebaseMap);
+                        Map<String, Object> firebaseMap = createFirebaseMap(food, clientTokenList.get(i).getToken());
+                        FireBaseHttpRequestConnector fireBaseHttpRequestConnector = new FireBaseHttpRequestConnector();
+                        fireBaseHttpRequestConnector.execute(firebaseMap);
+                    }
+
                 }
-
             }
         }
+
     }
 
     private Map<String,Object> createFirebaseMap(Food food,String to) {

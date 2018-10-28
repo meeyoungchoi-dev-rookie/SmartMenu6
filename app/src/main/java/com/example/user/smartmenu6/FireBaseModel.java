@@ -107,6 +107,10 @@ public class FireBaseModel {
                     hashMap.put("tableNo", dataSnapshot.child("tableNo").getValue());
                     hashMap.put("country", dataSnapshot.child("country").getValue());
                     hashMap.put("number", dataSnapshot.child("number").getValue());
+                    hashMap.put("orderNo", dataSnapshot.child("orderNo").getValue());
+                    //추가
+                    hashMap.put("orderTime",dataSnapshot.child("orderTime").getValue());
+
 
 
                     arrayAdapter.add(hashMap);
