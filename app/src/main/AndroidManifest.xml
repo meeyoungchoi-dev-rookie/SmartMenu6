@@ -24,8 +24,7 @@
             />
         <activity android:name=".ManagerSecondPage"
             />
-        <activity android:name=".CustomerRequestPage"
-            />
+
         <activity android:name=".KitchenMenuCheck"
             />
         <activity android:name=".OrderCheck"

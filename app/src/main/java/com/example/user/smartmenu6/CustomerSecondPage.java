@@ -37,17 +37,7 @@ public class CustomerSecondPage extends Activity {
             }
         });
 
-        mRequest = (Button) findViewById(R.id.request);
-        mRequest.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                Intent I = new Intent(CustomerSecondPage.this,CustomerRequestPage.class);
-
-                startActivityForResult(I, CHOOSE_BUTTON_REQUEST);
-
-            }
-        });
     }
 
 }
