@@ -51,9 +51,9 @@ public class CustomerMenuOrderPage extends AppCompatActivity implements View.OnC
         if(v==btn1){
             contry ="kor";
         }else if(v==btn2){
-            contry ="jap";
-        }else if(v==btn3){
             contry ="cha";
+        }else if(v==btn3){
+            contry ="jap";
         }
         if(!"".equals(contry)){
             if(foodFragment.isVisible()){

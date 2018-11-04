@@ -53,7 +53,7 @@ public class FoodListViewAdapter extends BaseAdapter {
         mFoodImageMap.put("짬짜면", R.drawable.zamzamaen);
         mFoodImageMap.put("사천탕면", R.drawable.sacheontangmyeon);
         mFoodImageMap.put("울면", R.drawable.oolmyeon);
-        mFoodImageMap.put("잠채밥", R.drawable.zabchaebob);
+        mFoodImageMap.put("잡채밥", R.drawable.zabchaebob);
         mFoodImageMap.put("짬뽕밥", R.drawable.zambongbob);
         mFoodImageMap.put("짜장밥", R.drawable.zazangbob);
         mFoodImageMap.put("새우볶음밥", R.drawable.saeoobokumbob);
