@@ -31,17 +31,27 @@
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/order_no"
+            android:layout_alignTop="@+id/order_time"
             android:layout_centerHorizontal="true"
             android:text="음식명"
             android:textSize="30sp" />
 
         <TextView
-            android:id="@+id/table_text"
+            android:id="@+id/table_cmt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btn_cook_finish"
             android:layout_alignStart="@+id/order_time"
+            android:gravity="end"
+            android:text="테이블텍스트:" />
+
+        <TextView
+            android:id="@+id/table_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/table_cmt"
+            android:layout_alignBottom="@+id/table_cmt"
+            android:layout_toEndOf="@+id/order_time"
             android:gravity="end"
             android:text="테이블번호" />
 
@@ -67,4 +77,6 @@
 
 
     </RelativeLayout>
+
+
 </LinearLayout>
